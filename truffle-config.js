@@ -1,15 +1,15 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 const toWei = new require('web3').utils.toWei;
 
-const address = process.env['ADDRESS'];
-const key = process.env['KEY'];
+const address = "0x7b88c13D5A56549B2F09BB7D8300e256056fdD85";
+const key = "PrivateKey";
 const mnemonic = process.env['MNEMONIC'];
 const poahost = process.env['POA_HOST'];
-const etherscanKey = process.env['ETHERSCAN_API'];
+const etherscanKey = "PrivateKey";
 const polygonscanKey = process.env['POLYGONSCAN_API'];
 const gnosisscanKey = process.env['GNOSISSCAN_API'];
 
-var url = process.env['URL'];
+var url = "https://arbitrum-goerli.publicnode.com";
 var walletProvider;
 
 try {
@@ -24,10 +24,8 @@ try {
     }
 
     walletProvider = new HDWalletProvider({
-      mnemonic,
       privateKeys: [key],
       providerOrUrl: url,
-      addressIndex: 0,
     });
 
     var walletAddress = walletProvider.getAddress();
@@ -57,6 +55,29 @@ module.exports = {
       port: 8545,
       network_id: 12346,
     },
+    optimism: {
+      provider: () => walletProvider,
+      network_id: 420,
+      gas: 5000000,
+      from: address,
+      gasPrice: toWei('50', 'gwei'),
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      pollingInterval: 1800000,
+      disabledConfirmationListener: true
+    },
+    arbitrum: {
+      provider: () => walletProvider,
+      network_id: 421613,
+      gas: 5000000,
+      from: address,
+      gasPrice: toWei('50', 'gwei'),
+      timeoutBlocks: 200,
+      skipDryRun: true,
+      pollingInterval: 1800000,
+      disabledConfirmationListener: true
+    },
+
     goerli: {
       provider: () => walletProvider,
       network_id: 5,
@@ -143,6 +164,8 @@ module.exports = {
     etherscan: etherscanKey,
     polygonscan: polygonscanKey,
     gnosisscan: gnosisscanKey,
+    optimismscan: etherscanKey,
+    arbiscan:etherscanKey
   },
 
   mocha: {

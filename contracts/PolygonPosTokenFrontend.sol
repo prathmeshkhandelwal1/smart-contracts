@@ -42,37 +42,14 @@ abstract contract PolygonPosTokenFrontend is TokenFrontend, IPolygonPosChildToke
    * @param name_ Token name.
    * @param symbol_ Token symbol.
    * @param ticker_ 3 letter currency ticker.
-   * @param childChainManager_ Address of Polygon Pos's child chain manager proxy.
    */
-  constructor(string memory name_, string memory symbol_, bytes3 ticker_,  address childChainManager_)
+  constructor(string memory name_, string memory symbol_, bytes3 ticker_)
     TokenFrontend(name_, symbol_, ticker_)
     {
       _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
-      _setupRole(DEPOSITOR_ROLE, childChainManager_);
     }
-
-  /**
-   * @notice Polygon Bridge Mechanism. Called when token is deposited on root chain
-   * @dev Should be callable only by ChildChainManager
-   * Should handle deposit by minting the required amount for user
-   * @param user user address for whom deposit is being done
-   * @param depositData abi encoded amount
-   */
-  function deposit(address user, bytes calldata depositData)
-    override
-    external
-  {
-    require(hasRole(DEPOSITOR_ROLE, msg.sender), "caller is not a DEPOSITOR");
-    uint256 amount = abi.decode(depositData, (uint256));
-    this.mintTo(user, amount);
-  }
-
-  /**
-   * @notice Polygon Bridge Mechanism. Called when user wants to withdraw tokens back to root chain
-   * @dev Should burn user's tokens. This transaction will be verified when exiting on root chain
-   * @param amount amount of tokens to withdraw
-   */
-  function withdraw(uint256 amount)
+  
+  function burn(uint256 amount)
     override
     external
   {
