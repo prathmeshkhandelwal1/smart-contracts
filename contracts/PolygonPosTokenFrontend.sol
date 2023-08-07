@@ -34,8 +34,6 @@ import "@openzeppelin/contracts/access/AccessControl.sol";
  * This token implement function for the Matic Polygon Brige.
  */
 abstract contract PolygonPosTokenFrontend is TokenFrontend, IPolygonPosChildToken {
-  bytes32 public constant DEPOSITOR_ROLE = keccak256("DEPOSITOR_ROLE");
-
   /**
    * @dev Contract constructor.
    * @notice The contract is an abstract contract as a result of the internal modifier.

@@ -19,10 +19,10 @@ pragma solidity 0.8.11;
 
 import "./PolygonPosTokenFrontend.sol";
 
-contract xTokenFronted is PolygonPosTokenFrontend {
+contract xTokenFrontend is PolygonPosTokenFrontend {
 
     constructor()
-      PolygonPosTokenFrontend("xTokenFronted", "xEURe", "EUR")
+      PolygonPosTokenFrontend("xTokenFrontend", "xEURe", "EUR")
     { }
 
 }

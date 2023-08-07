@@ -1,6 +1,6 @@
 var BlacklistValidator = artifacts.require("./BlacklistValidator.sol");
 var SmartController = artifacts.require("./SmartController.sol");
-var PolygonPosEUR = artifacts.require("./xTokenFronted.sol");
+var PolygonPosEUR = artifacts.require("./xTokenFrontend.sol");
 var MintableTokenLib = artifacts.require("./MintableTokenLib.sol");
 var TokenStorageLib = artifacts.require("./TokenStorageLib.sol");
 var SmartTokenLib = artifacts.require("./SmartTokenLib.sol");

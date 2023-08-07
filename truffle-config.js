@@ -2,13 +2,14 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const toWei = new require('web3').utils.toWei;
 
 const address = "0x7b88c13D5A56549B2F09BB7D8300e256056fdD85";
-const key = "PrivateKey";
+const key = "PK";
 const mnemonic = process.env['MNEMONIC'];
 const poahost = process.env['POA_HOST'];
-const etherscanKey = "PrivateKey";
+const etherscanKey = "PK";
 const polygonscanKey = process.env['POLYGONSCAN_API'];
 const gnosisscanKey = process.env['GNOSISSCAN_API'];
 
+// var url = "https://optimism-goerli.publicnode.com";
 var url = "https://arbitrum-goerli.publicnode.com";
 var walletProvider;
 
@@ -165,7 +166,7 @@ module.exports = {
     polygonscan: polygonscanKey,
     gnosisscan: gnosisscanKey,
     optimismscan: etherscanKey,
-    arbiscan:etherscanKey
+    arbiscan: etherscanKey
   },
 
   mocha: {
